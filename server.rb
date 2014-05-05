@@ -92,7 +92,7 @@ def from_direct_client(sock)
 end
 
 csv = Record.open_with_title("Record_Server.csv") do |csv|
-  csv << ["FromWho", "Token", "StartTime", "ElasedTime", "UploadRate"]
+  csv << ["FromWho", "Token", "StartTime", "ElasedTime"]
 end
 
 mutex = Mutex.new
@@ -119,7 +119,7 @@ TCPServer.open(SERVER_PORT) do |sock_server|
       end
 
        
-      csv << [who, token, start_time, elapsed_time.real, upload_rate(UPLOAD_FILE, elapsed_time.real)]
+      csv << [who, token, start_time, elapsed_time.real]
 
 
 
