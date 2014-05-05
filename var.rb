@@ -72,6 +72,16 @@ def upload_rate(file_name, upload_time)
   "#{dec_div(file_size, upload_time)} KB/s"
 end
 
+def make_sim_file (size)
+  FileUtils.mkdir_p("upload-file")
+  out_file = "upload-file/file.in"
+
+  File.open(out_file, "wb") do |f|
+    f.write( "0" * size)
+  end
+
+  puts "Make a File Size: #{File.size(out_file).to_filesize}"
+end
 
 
 # class

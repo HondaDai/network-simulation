@@ -1,14 +1,11 @@
 
 require './var.rb'
 
-FileUtils.mkdir_p("upload-file")
 
 M = 1024**2
-out_file = "upload-file/file.in"
+avg_m = 5117
 
-File.open(out_file, "wb") do |f|
-  #f.write( "0"*100*M )
-  f.write( "0"*5117 )
-end
 
-puts "Size: #{File.size(out_file).to_filesize}"
+make_sim_file(avg_m)
+
+
