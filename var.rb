@@ -59,6 +59,15 @@ def is_same_file?(file1, file2)
 end
 
 
+def dec_div(a, b)
+  ( BigDecimal.new(a.to_s)/ b.to_f ).to_f
+end
+
+def upload_rate(file_name, upload_time)
+  file_size = File.size(file_name) / 1024 
+  "#{dec_div(file_size, upload_time)} KB/s"
+end
+
 
 
 # class

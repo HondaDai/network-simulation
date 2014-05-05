@@ -3,7 +3,7 @@ require './var.rb'
 
 
 csv = Record.open_with_title("Record_DirectClient.csv") do |csv|
-  csv << ["Token", "StartTime", "ElasedTime"]
+  csv << ["Token", "StartTime", "ElasedTime", "UploadRate"]
 end
 token = ""
 
@@ -30,7 +30,8 @@ elapsed_time = Benchmark.measure do
 
 end
 
-csv << [token, start_time, elapsed_time.real]
+csv << [token, start_time, elapsed_time.real, upload_rate(UPLOAD_FILE, elapsed_time.real)]
 csv.close
 
+puts "Upload Rate #{upload_rate(UPLOAD_FILE, elapsed_time.real)}"
 puts "@ Direct-Client Elapsed Time: #{elapsed_time.real}"
