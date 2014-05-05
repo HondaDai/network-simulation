@@ -1,0 +1,2 @@
+U:RDoc::Attr[iI"total_size:ETI"ProgressiveIO#total_size;TI"RW;T:publico:RDoc::Markup::Document:@parts[o:RDoc::Markup::Paragraph;	[I"WGet or set the total size of the contained IO. If the passed IO is a File object  ;TI"*the size will be preset automatically;T:
+@fileI"lib/progressive_io.rb;T:0@omit_headings_from_table_of_contents_below0F@I"ProgressiveIO;TcRDoc::NormalClass0

@@ -7,6 +7,10 @@ csv = Record.open_with_title("Record_Client.csv") do |csv|
 end
 token = ""
 
+#upload_file = ProgressiveIO.new(UPLOAD_FILE) do |pos, total_size|
+#  puts (pos, total_size)
+#end
+
 server = TCPSocket.open(SERVER_IP, SERVER_PORT)
 puts "connect to server"
 

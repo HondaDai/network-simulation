@@ -6,6 +6,9 @@ require 'csv'
 require 'fileutils'
 require 'bigdecimal'
 
+#$LOAD_PATH << "#{File.dirname(__FILE__)}/lib/gems"
+
+require './lib/gems/progressive_io-1.0.0/lib/progressive_io.rb'
 
 # setting
 
