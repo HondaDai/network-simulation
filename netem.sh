@@ -35,6 +35,11 @@ tc-set() {
   RATE=100kbps
   CEIL=100kbps
 
+  tc qdisc add dev eth0 root handle 10: htb rate $RATE ceil $CEIL
+  tc qdisc add dev eth1 root handle 20: htb rate $RATE ceil $CEIL
+}
+
+temp () {
   # eth0
 
   sudo tc qdisc add dev eth0 root handle 10:0 htb default 0
