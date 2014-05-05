@@ -1,3 +1,6 @@
+
+upload-file/*
+
 *.gem
 *.rbc
 /.config
