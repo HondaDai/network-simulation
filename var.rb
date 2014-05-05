@@ -33,7 +33,8 @@ COMMAND_PORT = 26754
 
 CHUNK_SIZE = 1024 * 4
 
-UPLOAD_FILE = "test-big.jpg"
+#UPLOAD_FILE = "test-big.jpg"
+UPLOAD_FILE = "upload-file/file.in"
 
 END_FLAG = "@!#$%"*5
 
