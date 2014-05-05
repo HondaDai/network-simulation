@@ -1,0 +1,8 @@
+
+
+
+IP="10.211.55.5"
+
+alias sudoe="sudo env PATH=$PATH IP=$IP"
+alias tk="sudoe trickle -d 1 -u 1 "
+alias tkr="tk ruby"
