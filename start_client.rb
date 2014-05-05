@@ -30,13 +30,13 @@ sim_times = 10
   make_sim_file(file_size * M)
 
   sim_times.times do |i| 
-    puts "Sim.#{i} - Client"
+    puts "Sim.#{i} - Client (#{file_size})"
     `ruby client.rb`
     wait_server
   end
 
   sim_times.times do |i| 
-    puts "Sim.#{i} - DirectClient"
+    puts "Sim.#{i} - DirectClient (#{file_size})"
     `ruby direct_client.rb`
     wait_server
   end
