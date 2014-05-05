@@ -1,4 +1,7 @@
 
+RATE=300kbps
+CEIL=300kbps
+
 tc-clean() {
   sudo tc qdisc del dev eth0 root
   sudo tc qdisc del dev eth1 root
@@ -23,6 +26,25 @@ iptables-show() {
   sudo iptables-save
 }
 
+tc-rate() {
+  echo "Your Rate Setting:"
+  echo "Rate: $RATE"
+  echo "Ceil: $CEIL"
+}
+
+tc-set-h2() {
+  RATE=400kbps
+  CEIL=400kbps
+  tc-set
+}
+
+tc-set-h4() {
+  RATE=800kbps
+  CEIL=800kbps
+  tc-set
+}
+
+
 tc-set() {
   tc-clean
   iptables-clean
@@ -31,9 +53,7 @@ tc-set() {
   #sudo tc tc qdisc add dev eth1 root netem delay 100ms 10ms 10%
   
   # iptables -t mangle -A POSTROUTING -d 192.168.0.135 -i eth0 -j MARK –set-mark 10
-  
-  RATE=300kbps
-  CEIL=300kbps
+
 
   # eth0
 
@@ -64,6 +84,8 @@ tc-set() {
 
   #tc qdisc add dev eth0 root handle 10: htb rate $RATE ceil $CEIL
   #tc qdisc add dev eth1 root handle 20: htb rate $RATE ceil $CEIL
+
+  tc-rate
 }
 
 temp () {
