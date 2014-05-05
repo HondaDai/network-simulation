@@ -3,6 +3,7 @@ require './var.rb'
 
 lock = Mutex.new
 $storage = {}
+$connected_sock = []
 
 def choice_free_gateway
   "gateway-1"
@@ -91,6 +92,11 @@ def from_direct_client(sock)
   token
 end
 
+def from_command(sock)
+  sock.puts $connected_sock.size
+  sock.close
+end
+
 csv = Record.open_with_title("Record_Server.csv") do |csv|
   csv << ["FromWho", "Token", "StartTime", "ElasedTime"]
 end
@@ -110,18 +116,24 @@ TCPServer.open(SERVER_PORT) do |sock_server|
       elapsed_time = Benchmark.measure do 
         case who
         when "direct-client"
+          $connected_sock << sock
           token = from_direct_client(sock)
+          $connected_sock.delete sock
         when "client"
+          $connected_sock << sock
           token = from_client(sock)
+          $connected_sock.delete sock
         when "gateway"
+          $connected_sock << sock
           token = from_gateway(sock)
+          $connected_sock.delete sock
+        when "command"
+          from_command(sock)
         end
       end
 
        
       csv << [who, token, start_time, elapsed_time.real]
-
-
 
 
       puts "@ #{who.titleize} Elapsed Time: #{elapsed_time.real}"
