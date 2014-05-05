@@ -32,14 +32,9 @@ tc-set() {
   
   # iptables -t mangle -A POSTROUTING -d 192.168.0.135 -i eth0 -j MARK –set-mark 10
   
-  RATE=100kbps
-  CEIL=100kbps
+  RATE=300kbps
+  CEIL=300kbps
 
-  tc qdisc add dev eth0 root handle 10: htb rate $RATE ceil $CEIL
-  tc qdisc add dev eth1 root handle 20: htb rate $RATE ceil $CEIL
-}
-
-temp () {
   # eth0
 
   sudo tc qdisc add dev eth0 root handle 10:0 htb default 0
@@ -66,5 +61,12 @@ temp () {
   
   sudo iptables -t mangle -A POSTROUTING -o eth1 -j MARK --set-mark 200
   sudo iptables -t mangle -A PREROUTING -i eth1 -j MARK --set-mark 200
+
+  #tc qdisc add dev eth0 root handle 10: htb rate $RATE ceil $CEIL
+  #tc qdisc add dev eth1 root handle 20: htb rate $RATE ceil $CEIL
+}
+
+temp () {
+  
 
 }
