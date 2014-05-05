@@ -67,6 +67,6 @@ tc-set() {
 }
 
 temp () {
-  
+  echo "temp"
 
 }
