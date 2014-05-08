@@ -31,7 +31,8 @@ end
 COMMAND_PORT = 26754
 
 
-CHUNK_SIZE = 1024 * 4
+# CHUNK_SIZE = 1024 * 4
+CHUNK_SIZE = 1480
 
 #UPLOAD_FILE = "test-big.jpg"
 UPLOAD_FILE = "upload-file/file.in"
