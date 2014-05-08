@@ -1,4 +1,4 @@
-FromWho,Token,StartTime,ElasedTime
+FromWho,Token,StartTime,ElapsedTime
 client,b6de2f0cc4257b404d886487056807c5,1399288411.5823958,0.016442667
 command,"",1399288419.2507966,8.9383e-05
 command,"",1399288424.5108526,6.8556e-05

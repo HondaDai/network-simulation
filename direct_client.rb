@@ -3,7 +3,7 @@ require './var.rb'
 
 
 csv = Record.open_with_title("Record_DirectClient.csv") do |csv|
-  csv << ["Token", "FileSize", "ChunkSize", "StartTime", "ElasedTime", "UploadRate"]
+  csv << ["Token", "FileSize", "ChunkSize", "StartTime", "ElapsedTime", "UploadRate"]
 end
 token = ""
 

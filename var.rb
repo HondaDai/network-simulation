@@ -133,8 +133,23 @@ class CSVTable < Array
     ( BigDecimal.new(self.sum_of(col_name).to_s)/self.size ).to_f
   end
 
+  def group_by(field)
+    # self.col(field).uniq
+    result = {}
+    self.each do |row|
+      result[row[field]] ||=  CSVTable.new
+      result[row[field]] << row
+    end
+    result
+  end
+
+  def col(field)
+    self.reduce([]) do |arr, row|
+      arr << row[field]
+    end
+  end
   
-  ["select"].each do |method|
+  ["select", "map"].each do |method|
     CSVTable.class_eval <<-RUBY_EVAL
       def #{method}(*args)
         CSVTable.new(super)

@@ -98,7 +98,7 @@ def from_command(sock)
 end
 
 csv = Record.open_with_title("Record_Server.csv") do |csv|
-  csv << ["FromWho", "Token", "StartTime", "ElasedTime"]
+  csv << ["FromWho", "Token", "StartTime", "ElapsedTime"]
 end
 
 mutex = Mutex.new
@@ -132,9 +132,9 @@ TCPServer.open(SERVER_PORT) do |sock_server|
         end
       end
 
-       
-      csv << [who, token, start_time, elapsed_time.real]
-
+      if who != "command"
+        csv << [who, token, start_time, elapsed_time.real]
+      end
 
       puts "@ #{who.titleize} Elapsed Time: #{elapsed_time.real}"
 
