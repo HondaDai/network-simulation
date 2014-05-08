@@ -25,7 +25,7 @@ def wait_server
 end
 
 
-sim_times = 10
+sim_times = 5
 (5..100).step(5) do |file_size|
   make_sim_file(file_size * M)
 
