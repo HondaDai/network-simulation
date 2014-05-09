@@ -33,8 +33,8 @@ tc-rate() {
 }
 
 tc-set-h2() {
-  RATE=400kbps
-  CEIL=400kbps
+  RATE=1600kbps
+  CEIL=1600kbps
   tc-set
 }
 
