@@ -50,7 +50,7 @@ end
 
 sim_times = 5
 size_range = (5..100).step(5)
-client_num = 1
+client_num = 10
 
 
 size_range.each do |file_size|
