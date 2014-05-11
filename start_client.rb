@@ -49,7 +49,7 @@ end
 
 
 sim_times = 5
-size_range = (5..100).step(5)
+size_range = (5..50).step(5)
 client_num = 10
 
 
