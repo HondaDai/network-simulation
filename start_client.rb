@@ -60,7 +60,7 @@ size_range.each do |file_size|
     puts "Sim.#{i} - Client (Size: #{file_size})"
 
     ThreadPool.new(client_num) do |i|
-      puts "start Client. #{i} "
+      puts "start Client. #{i} (Size: #{file_size})"
       `ruby client.rb`
       puts "done Client. #{i} "
     end
@@ -73,7 +73,7 @@ size_range.each do |file_size|
     
 
     ThreadPool.new(client_num) do |i|
-      puts "start Direct Client. #{i} "
+      puts "start Direct Client. #{i} (Size: #{file_size})"
       `ruby direct_client.rb`
       puts "done Direct Client. #{i} "
     end
