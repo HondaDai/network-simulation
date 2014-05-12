@@ -113,6 +113,6 @@ GoogleChart::LineChart.new('640x400', "Server Recv Time(sec) v.s. File Size(MB)"
   lc.axis :x, :range => sizes.minmax.map {|s| s.to_f.round(2) }, :labels => sizes
   lc.grid :x_step => improvement.size, :y_step => sizes.size #, :length_segment => 1, :length_blank => 0
 
-  `open #{lc.to_url.inspect}`
+  # `open #{lc.to_url.inspect}`
 end
 
