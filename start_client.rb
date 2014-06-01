@@ -28,7 +28,7 @@ class ThreadPool
 
   
 
-  def initialize(t, &block)
+  def initialize(t, wait = 0, &block)
     @threads = []
 
     t.times.each do |i| 
@@ -36,6 +36,7 @@ class ThreadPool
         # block(i)
         yield i
       end
+      sleep wait
     end
 
     self.join
@@ -49,8 +50,8 @@ end
 
 
 sim_times = 5
-size_range = (5..50).step(5)
-client_num = 20
+size_range = (10..100).step(10)
+client_num = 10
 
 
 size_range.each do |file_size|
@@ -59,7 +60,7 @@ size_range.each do |file_size|
   sim_times.times do |i| 
     puts "Sim.#{i} - Client (Size: #{file_size})"
 
-    ThreadPool.new(client_num) do |i|
+    ThreadPool.new(client_num, 5) do |i|
       puts "start Client. #{i} (Size: #{file_size})"
       `ruby client.rb`
       puts "done Client. #{i} "
@@ -72,7 +73,7 @@ size_range.each do |file_size|
     puts "Sim.#{i} - DirectClient (Size: #{file_size})"
     
 
-    ThreadPool.new(client_num) do |i|
+    ThreadPool.new(client_num, 5) do |i|
       puts "start Direct Client. #{i} (Size: #{file_size})"
       `ruby direct_client.rb`
       puts "done Direct Client. #{i} "
