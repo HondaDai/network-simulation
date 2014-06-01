@@ -49,7 +49,7 @@ class ThreadPool
 end
 
 
-sim_times = 5
+sim_times = 1
 size_range = (10..100).step(10)
 client_num = 10
 
