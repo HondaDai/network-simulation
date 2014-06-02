@@ -5,8 +5,9 @@ require './plotlib.rb'
 W = Distribution::Weibull
 
 
-x_data = (1..10).to_a
-y_data = x_data.map {|x| W.pdf(x, 1, 1) } 
+x_data = (1..10).step(1).to_a
+y_data = x_data.map {|x| W.pdf(x, 10, 10) } 
+#y_data = x_data.map {|x| Distribution::Poisson.cdf(x, 100) } 
 
 fig, ax = Plot.subplots 
 
