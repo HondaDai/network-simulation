@@ -6,6 +6,7 @@ require './var.rb'
 require './plotlib.rb'
 require 'matrix'
 
+=begin
 %w{
   Record_multi/c1480_m10_800_400
   Record_multi/c1480_m10_800_800
@@ -20,7 +21,15 @@ require 'matrix'
   m1_800_400
   m1_800_800
   m1_800_600
-}.each do |record_path, plot_name|
+}
+=end
+
+%w{
+  Record_100_150_delay1
+}.zip %w{
+  d1_100_150
+}
+.each do |record_path, plot_name|
 
 
   direct_client = CSVTable.read("#{record_path}/Record_DirectClient.csv")

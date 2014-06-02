@@ -6,6 +6,7 @@ require './plotlib.rb'
 
 record_path = "Record_multi/c1480_m10_800_400"
 
+=begin
 %w{
   Record_multi/c1480_m10_800_400
   Record_multi/c1480_m10_800_800
@@ -20,7 +21,15 @@ record_path = "Record_multi/c1480_m10_800_400"
   m1_800_400
   m1_800_800
   m1_800_600
-}.each do |record_path, plot_name|
+}
+=end
+
+%w{
+  Record_100_150_delay1
+}.zip %w{
+  d1_100_150
+}
+.each do |record_path, plot_name|
 
   client = CSVTable.read("#{record_path}/Record_Client.csv")
   direct_client = CSVTable.read("#{record_path}/Record_DirectClient.csv")
@@ -34,9 +43,8 @@ record_path = "Record_multi/c1480_m10_800_400"
   client_elapsed_times = []
   client_elapsed_times_error = [[], []] #[lower_error, upper_error]
   client.group_by("FileSize").each do |size, group|
-    if size.to_i > 52428800
-      break
-    end
+    # break if size.to_i > 52428800
+    
     time = group.avg_of("ElapsedTime")
     puts "Size: #{size.to_i.to_filesize} / ElapsedTime: #{time}"
     client_elapsed_times << time.to_f
@@ -51,9 +59,8 @@ record_path = "Record_multi/c1480_m10_800_400"
   direct_client_elapsed_times = []
   direct_client_elapsed_times_error = [[], []]
   direct_client.group_by("FileSize").each do |size, group|
-    if size.to_i > 52428800
-      break
-    end
+    # break if size.to_i > 52428800
+      
     time = group.avg_of("ElapsedTime")
     puts "Size: #{size.to_i.to_filesize} / ElapsedTime: #{time}"
     direct_client_elapsed_times << time.to_f
